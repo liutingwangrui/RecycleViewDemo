@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/left_into"
+        android:title="左边进入" />
+    <item
+        android:id="@+id/right_into"
+        android:title="右边进入" />
+    <item
+        android:id="@+id/scale_into"
+        android:title="缩放" />
+    <item
+        android:id="@+id/alpha_into"
+        android:title="透明" />
+
+</menu>

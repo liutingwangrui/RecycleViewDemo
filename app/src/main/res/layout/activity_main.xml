@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <TextView
+        style="@style/base_style"
+        android:onClick="baseRecycleView"
+        android:text="RecycleView刷新加载以及线性布局和网络布局" />
+
+    <TextView
+        style="@style/base_style"
+        android:onClick="deleteRecycleView"
+        android:text="侧拉删除" />
+
+    <TextView
+        style="@style/base_style"
+        android:onClick="intoRecycleView"
+        android:text="动画进入" />
+
+
+</LinearLayout>
