@@ -4,9 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.recycleviewdemo.activity.AddHeaderAndFooterActivity;
 import com.recycleviewdemo.activity.AnimationIntoActivity;
 import com.recycleviewdemo.activity.BaseActivity;
 import com.recycleviewdemo.activity.DeleteItemActivity;
+import com.recycleviewdemo.activity.GroupActivity;
 import com.recycleviewdemo.activity.LikeListViewActivity;
 
 public class MainActivity extends BaseActivity {
@@ -32,6 +34,13 @@ public class MainActivity extends BaseActivity {
 
     public void intoRecycleView(View view) {
         startActivity(new Intent(this, AnimationIntoActivity.class));
+    }
+
+    public void addHeaderAndFooterRecycleView(View view) {
+        startActivity(new Intent(this, AddHeaderAndFooterActivity.class));
+    }
+ public void groupRecycleView(View view) {
+        startActivity(new Intent(this, GroupActivity.class));
     }
 
 }

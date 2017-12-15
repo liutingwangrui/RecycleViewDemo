@@ -19,6 +19,8 @@
         <activity android:name=".activity.LikeListViewActivity" />
         <activity android:name=".activity.DeleteItemActivity" />
         <activity android:name=".activity.AnimationIntoActivity" />
+        <activity android:name=".activity.GroupActivity" />
+        <activity android:name=".activity.AddHeaderAndFooterActivity" />
     </application>
 
 </manifest>
