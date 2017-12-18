@@ -1,220 +1,170 @@
 package com.recycleviewdemo.adapter;
 
+import android.content.Context;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+import com.recycleviewdemo.R;
+import com.recycleviewdemo.bean.ClassBean;
+
+import java.util.List;
+
 /**
  * Created by Administrator on 2017/12/15.
  */
 
-public class GroupContentAdapter /*extends RecyclerView.Adapter<RecyclerView.ViewHolder>*/ {
+public class GroupContentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-//    private static final int HEADER = 10000;
-//    private static final int TYPE_HEADER = 1;
-//    private static final int TYPE_CONTENT = 2;
-//    private SparseArrayCompat<View> headerViews = new SparseArrayCompat<>();//头部
-//
-//    //合并的情况
-//    private Context context;
-//    private List<ClassBean> datas;
-//    private HashMap<Integer, Integer> headerIndex = new HashMap<>();
-//
-//    public GroupContentAdapter(Context context, List<ClassBean> datas) {
-//        this.context = context;
-//        this.datas = datas;
-//    }
-//
-//
-//    /**
-//     * 是否为头布局
-//     *
-//     * @param position
-//     * @return
-//     */
-//    protected boolean isHeaderView(int position) {
-//        return headerIndex.containsValue(new Integer(position));
-//
-//    }
-//
-//
-//    /**
-//     * 获取头部的数量
-//     *
-//     * @return
-//     */
-//    private int getHeaderCount() {
-//        return datas.size();
-//    }
-//
-//
-//    /**
-//     * 获取item的数量
-//     *
-//     * @return
-//     */
-//
-//    private int getContentCount() {
-//        int itemCount = 0;
-//        int studentSize = 0;
-//        for (int i = 0; i < datas.size(); i++) {
-//            if (i != 0) {
-//                itemCount++;
-//            }
-//            headerIndex.put(i, new Integer(itemCount));
-//            itemCount += getStudentOfClass(i);
-//            studentSize += getStudentOfClass(i);
-//        }
-//        return studentSize;
-//
-//    }
-//
-//    /**
-//     * 添加头部布局
-//     *
-//     * @param view
-//     */
-//    public void addHeaderView(View view) {
-//        headerViews.put(headerViews.size() + HEADER, view);
-//    }
-//
-//
-//    @Override
-//    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-//
-//        if (viewType == TYPE_HEADER) {//头部布局
-//            return new HeaderViewHolder(View.inflate(context, R.layout.group_item, null));
-//
-//        }
-//        //内容布局
-//        return new ContentViewHolder(View.inflate(context, R.layout.group_item, null));
-//
-//
-//    }
-//
-//
-//    @Override
-//    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-//        if (isHeaderView(position)) {
-//            ((HeaderViewHolder) holder).textView.setText(datas.get(getHeadRealCount(position)).getClassName());
-//            return;
-//        }
-//
-//
-//        ((ContentViewHolder)holder).textView1.setText(
-//                datas.get(getStudentOfClass(position))       //获取指定的班级
-//                        .getClassStudents()                          //该班级下所有学生
-//                        .get(position - headerIndex.get(getStudentOfClass(position)) - 1));    //具体的学生
-//
-//
-//    }
-//
-//
-//    /**
-//     * 根据position获取当前是第几个班级
-//     * @param position
-//     * @return
-//     */
-//    private int getHeadRealCount(int position){
-//        int result = 0;
-//        Set<Map.Entry<Integer, Integer>> set = headerIndex.entrySet();
-//        for(Map.Entry<Integer, Integer> entry : set){
-//            if(entry.getValue().equals(position)){
-//                result = entry.getKey();
-//                break;
-//            }
-//        }
-//        return result;
-//    }
-//
-//    /**
-//     * 根据学生的position获取所属的班级
-//     *
-//     * @return
-//     */
-//    private int getStudentOfClass(int position) {
-//
-//        int tempSize = 0;
-//
-//        for (int i = 0; i < datas.size(); i++) {
-//            tempSize += datas.get(i).getClassStudents().size() + 1;
-//
-//            if (position <= tempSize) {
-//                return i;
-//            }
-//        }
-//        return 0;
-//    }
-//
-//    @Override
-//    public int getItemViewType(int position) {
-//        if (isHeaderView(position)) {
-//            return TYPE_HEADER;
-//        } else {
-//            return TYPE_CONTENT;
-//        }
-//    }
-//
-//    /**
-//     * 为了动态的为不同的position设置布局
-//     *
-//     * @param recyclerView
-//     */
-//    @Override
-//    public void onAttachedToRecyclerView(RecyclerView recyclerView) {
-//        RecyclerView.LayoutManager manager = recyclerView.getLayoutManager();
-//        if (manager instanceof GridLayoutManager) {
-//            final GridLayoutManager gridLayoutManager = (GridLayoutManager) manager;
-//            GridLayoutManager.SpanSizeLookup spanSizeLookup = gridLayoutManager.getSpanSizeLookup();
-//            gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
-//                @Override
-//                public int getSpanSize(int position) {//getSpanSize方法，返回值就表示当前item占多少列
-//                    int viewType = getItemViewType(position);
-//                    if ((headerViews.get(viewType) != null)) {
-//                        return ((GridLayoutManager) gridLayoutManager).getSpanCount();
-//                    }
-//                    return 1;
-//                }
-//            });
-//        }
-//
-//    }
-//
-//    /**
-//     * 即滑动离开了当前窗口界面就会被调用
-//     *
-//     * @param holder
-//     */
-//    @Override
-//    public void onViewAttachedToWindow(RecyclerView.ViewHolder holder) {
-//        int position = holder.getLayoutPosition();
-//        if (isHeaderView(position)) {
-//            ViewGroup.LayoutParams params = holder.itemView.getLayoutParams();
-//            if (params != null && params instanceof StaggeredGridLayoutManager.LayoutParams) {
-//                StaggeredGridLayoutManager.LayoutParams layoutParams = (StaggeredGridLayoutManager.LayoutParams) params;
-//                layoutParams.setFullSpan(true);
-//            }
-//        }
-//    }
-//
-//    @Override
-//    public int getItemCount() {
-//        return getHeaderCount() + getContentCount();
-//    }
-//
-//    class HeaderViewHolder extends RecyclerView.ViewHolder {
-//
-//        private TextView textView;
-//
-//        public HeaderViewHolder(View itemView) {
-//            super(itemView);
-//            textView = itemView.findViewById(R.id.text3);
-//        }
-//    }
-//
-//
-//    class ContentViewHolder extends RecyclerView.ViewHolder {
-//        TextView textView1;
-//
-//        public ContentViewHolder(View itemView) {
-//            super(itemView);
-//            textView1 = itemView.findViewById(R.id.text3);
-//        }
-//    }
+    private Context context;
+    private List<ClassBean> classBeen;
+    private static final int HEADER = 1;
+    private static final int CONTENT = 2;
+
+    public GroupContentAdapter(Context context, List<ClassBean> classBeen) {
+        this.context = context;
+        this.classBeen = classBeen;
+    }
+
+    @Override
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+
+        //根据返回的viewType在加载不同的布局
+        if (viewType == HEADER) {//标题
+            View view = LayoutInflater.from(context).inflate(R.layout.item_fen_lan_title, null);
+            return new HeaderHolder(view);
+        } else if (viewType == CONTENT) {//内容
+            View view1 = LayoutInflater.from(context).inflate(R.layout.item_fenlan_normal, null);
+            return new ContentHolder(view1);
+        } else {
+            return null;
+        }
+    }
+
+    @Override
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        //根据不同的位置来设置不同的内容
+        int count = -1;
+        for (int i = 0; i < classBeen.size(); i++) {
+            count += 1;
+            if (position == count) {
+                HeaderHolder headerHolder = (HeaderHolder) holder;
+                headerHolder.name.setText(classBeen.get(i).getClassName());
+            } else {
+                List<String> classStudents = classBeen.get(i).getClassStudents();
+                for (int j = 0; j < classStudents.size(); j++) {
+                    count += 1;
+                    if (position == count) {
+                        final String s = classStudents.get(j);
+                        final ContentHolder contentHolder = (ContentHolder) holder;
+                        contentHolder.content.setText(s);
+                        // 点击事件和长按事件
+                        if (mOnItemClickLitener != null) {
+                            contentHolder.content.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    mOnItemClickLitener.onItemClick(s);
+                                }
+                            });
+                        }
+                        contentHolder.content.setOnLongClickListener(new View.OnLongClickListener() {
+                            @Override
+                            public boolean onLongClick(View v) {
+                                mOnItemClickLitener.onItemLongClick(s);
+                                return false;
+                            }
+                        });
+
+                    }
+                }
+            }
+        }
+
+    }
+
+    /**
+     * 区分是标题还是内容
+     * @param position
+     * @return
+     */
+    @Override
+    public int getItemViewType(int position) {
+        int count = -1;
+        for (int i = 0; i < classBeen.size(); i++) {
+            count++;
+            if (position == count) {
+                return HEADER;
+            }
+
+            //获取内容的集合，然后在进行遍历
+            List<String> classStudents = classBeen.get(i).getClassStudents();
+            for (int j = 0; j < classStudents.size(); j++) {
+                count++;
+                if (position == count) {
+                    return CONTENT;
+                }
+
+            }
+        }
+        return super.getItemViewType(position);
+    }
+
+    /**
+     * RecycleView返回的数量
+     * @return
+     */
+    @Override
+    public int getItemCount() {
+        int childCount = classBeen.size();//标题的数量
+        for (int i = 0; i < classBeen.size(); i++) {
+            childCount += classBeen.get(i).getClassStudents().size();//内容的数量
+        }
+        return childCount;
+    }
+
+    /**
+     * 标题ViewHolder
+     */
+    private class HeaderHolder extends RecyclerView.ViewHolder {
+
+        TextView name;
+
+        HeaderHolder(View itemView) {
+            super(itemView);
+            name = (TextView) itemView.findViewById(R.id.item_title_tv);
+        }
+    }
+
+
+    /**
+     * 内容ViewHolder
+     */
+    private class ContentHolder extends RecyclerView.ViewHolder {
+
+        TextView content;
+
+        ContentHolder(View itemView) {
+            super(itemView);
+            content = (TextView) itemView.findViewById(R.id.item_fen_lan_normal_tv);
+        }
+    }
+
+
+    /**
+     * 条目点击事件和长按事件
+     */
+    public interface OnItemClickLitener {
+        void onItemClick(String name);
+
+        void onItemLongClick(String name);
+    }
+
+    private OnItemClickLitener mOnItemClickLitener;
+
+    public void setOnItemClickLitener(OnItemClickLitener mOnItemClickLitener) {
+        this.mOnItemClickLitener = mOnItemClickLitener;
+    }
+
 }

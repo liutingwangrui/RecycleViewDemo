@@ -27,10 +27,15 @@
         android:onClick="addHeaderAndFooterRecycleView"
         android:text="RecyclerView添加头部和尾部" />
 
-<TextView
+    <TextView
         style="@style/base_style"
         android:onClick="groupRecycleView"
         android:text="分组显示" />
+
+    <TextView
+        style="@style/base_style"
+        android:onClick="NianXingRecycleView"
+        android:text="粘性RecyclerView" />
 
 
 </LinearLayout>

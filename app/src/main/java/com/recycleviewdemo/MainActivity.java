@@ -10,6 +10,7 @@ import com.recycleviewdemo.activity.BaseActivity;
 import com.recycleviewdemo.activity.DeleteItemActivity;
 import com.recycleviewdemo.activity.GroupActivity;
 import com.recycleviewdemo.activity.LikeListViewActivity;
+import com.recycleviewdemo.activity.NianXingActivity;
 
 public class MainActivity extends BaseActivity {
 
@@ -39,8 +40,13 @@ public class MainActivity extends BaseActivity {
     public void addHeaderAndFooterRecycleView(View view) {
         startActivity(new Intent(this, AddHeaderAndFooterActivity.class));
     }
- public void groupRecycleView(View view) {
+
+    public void groupRecycleView(View view) {
         startActivity(new Intent(this, GroupActivity.class));
+    }
+
+    public void NianXingRecycleView(View view) {
+        startActivity(new Intent(this, NianXingActivity.class));
     }
 
 }
