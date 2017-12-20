@@ -18,6 +18,7 @@ import butterknife.BindView;
 
 /**
  * Created by Administrator on 2017/12/15.
+ * 添加头部和尾部
  */
 
 public class AddHeaderAndFooterActivity extends BaseActivity {

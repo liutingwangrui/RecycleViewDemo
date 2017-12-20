@@ -18,6 +18,7 @@ import butterknife.BindView;
 
 /**
  * Created by Administrator on 2017/12/13.
+ * 动画
  */
 
 public class AnimationIntoActivity extends BaseActivity {

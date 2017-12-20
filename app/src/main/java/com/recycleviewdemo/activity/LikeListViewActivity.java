@@ -28,6 +28,7 @@ import butterknife.BindView;
 
 /**
  * Created by Administrator on 2017/12/12.
+ * 基本使用
  */
 
 public class LikeListViewActivity extends BaseActivity {

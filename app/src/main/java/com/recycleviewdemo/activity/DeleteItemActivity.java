@@ -25,6 +25,7 @@ import butterknife.BindView;
 
 /**
  * Created by Administrator on 2017/12/13.
+ * 侧拉删除
  */
 
 public class DeleteItemActivity extends BaseActivity {

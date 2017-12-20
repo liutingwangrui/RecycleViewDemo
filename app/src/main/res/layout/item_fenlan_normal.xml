@@ -9,4 +9,8 @@
         android:layout_height="70dp"
         android:gravity="center"
         android:textColor="#000" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="#50505050" />
 </RelativeLayout>

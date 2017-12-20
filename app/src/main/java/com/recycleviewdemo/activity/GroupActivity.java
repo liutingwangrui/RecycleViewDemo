@@ -19,6 +19,7 @@ import butterknife.BindView;
 
 /**
  * Created by Administrator on 2017/12/14.
+ * 分组
  */
 
 public class GroupActivity extends BaseActivity {
