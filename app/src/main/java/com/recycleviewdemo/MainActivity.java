@@ -11,6 +11,7 @@ import com.recycleviewdemo.activity.DeleteItemActivity;
 import com.recycleviewdemo.activity.GroupActivity;
 import com.recycleviewdemo.activity.LikeListViewActivity;
 import com.recycleviewdemo.activity.NianXingActivity;
+import com.recycleviewdemo.activity.ShowItemActivity;
 
 public class MainActivity extends BaseActivity {
 
@@ -47,6 +48,10 @@ public class MainActivity extends BaseActivity {
 
     public void NianXingRecycleView(View view) {
         startActivity(new Intent(this, NianXingActivity.class));
+    }
+
+    public void showItemRecycleView(View view) {
+        startActivity(new Intent(this, ShowItemActivity.class));
     }
 
 }

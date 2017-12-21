@@ -11,4 +11,11 @@
         android:gravity="center"
         android:textColor="#000"
         android:textSize="26sp" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="#50505050" />
+
 </RelativeLayout>

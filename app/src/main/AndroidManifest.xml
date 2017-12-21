@@ -22,6 +22,7 @@
         <activity android:name=".activity.GroupActivity" />
         <activity android:name=".activity.AddHeaderAndFooterActivity" />
         <activity android:name=".activity.NianXingActivity" />
+        <activity android:name=".activity.ShowItemActivity" />
     </application>
 
 </manifest>
