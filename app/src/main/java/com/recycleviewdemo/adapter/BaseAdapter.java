@@ -73,7 +73,7 @@ public abstract class BaseAdapter extends RecyclerView.Adapter<BaseViewHolder> {
     //获取Item数量
     @Override
     public int getItemCount() {
-        return realDatas.size();
+        return realDatas.size() == 0 ? 0 : realDatas.size();
     }
 
 

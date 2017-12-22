@@ -10,7 +10,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.recycleviewdemo.R;
@@ -38,6 +40,8 @@ public class LikeListViewActivity extends BaseActivity {
     SwipeRefreshLayout swipeRefreshLayout;
     @BindView(R.id.recyclerview)
     RecyclerView recyclerView;
+    @BindView(R.id.tv)
+    TextView textView;
 
     private List<String> datas = new ArrayList<>();
     private List<String> tollDatas = new ArrayList<>();
@@ -57,6 +61,16 @@ public class LikeListViewActivity extends BaseActivity {
 
 
         initData();
+        datas.clear();
+        if (datas.size()>0){
+            recyclerView.setVisibility(View.VISIBLE);
+            textView.setVisibility(View.GONE);
+
+        }else{
+            recyclerView.setVisibility(View.GONE);
+            textView.setVisibility(View.VISIBLE);
+
+        }
         //设置刷新控件颜色
         swipeRefreshLayout.setColorSchemeColors(Color.parseColor("#4DB6AC"));
         likeListAdapter = new LikeListAdapter(this, datas);
@@ -79,7 +93,17 @@ public class LikeListViewActivity extends BaseActivity {
                 pager = 1;
                 datas.clear();
                 initData();
+                if (datas.size()>0){
+                    recyclerView.setVisibility(View.VISIBLE);
+                    textView.setVisibility(View.GONE);
+
+                }else{
+                    recyclerView.setVisibility(View.GONE);
+                    textView.setVisibility(View.VISIBLE);
+
+                }
                 loadMoreWrapper.notifyDataSetChanged();
+
                 swipeRefreshLayout.postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -167,6 +191,15 @@ public class LikeListViewActivity extends BaseActivity {
         datas.clear();
         pager=1;
         initData();
+        if (datas.size()>0){
+            recyclerView.setVisibility(View.VISIBLE);
+            textView.setVisibility(View.GONE);
+
+        }else{
+            recyclerView.setVisibility(View.GONE);
+            textView.setVisibility(View.VISIBLE);
+
+        }
         recyclerView.setAdapter(loadMoreWrapper);
 
 

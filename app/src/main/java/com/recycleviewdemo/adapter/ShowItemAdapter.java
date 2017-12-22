@@ -21,6 +21,7 @@ public class ShowItemAdapter extends RecyclerView.Adapter<BaseViewHolder> {
     private Context context;
     private List<ShowItemBean> list;
     private OnScrollListener mOnScrollListener;
+    private int preClickPosition = -1;
 
     public ShowItemAdapter(Context context, List<ShowItemBean> list) {
         this.context = context;
@@ -66,6 +67,7 @@ public class ShowItemAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         return list.size();
     }
 
+
     @Override
     public int getItemViewType(int position) {
         return list.get(position).getType();
@@ -76,6 +78,7 @@ public class ShowItemAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         public void onExpandChildren(ShowItemBean showItemBean) {
             //确定当前点击的item的位置
             int currentPosition = getCurrentPosition(showItemBean.getID());
+            preClickPosition = currentPosition;
             //获取子数据的对象
             ShowItemBean childrenData = getChildrenData(showItemBean);
             if (childrenData == null) {
@@ -99,10 +102,22 @@ public class ShowItemAdapter extends RecyclerView.Adapter<BaseViewHolder> {
             if (childrenData == null) {
                 return;
             }
-            remove(currentPosition + 1);
-            if (mOnScrollListener != null) {
-                mOnScrollListener.scrollTo(currentPosition);
+//            if (currentPosition != preClickPosition && preClickPosition > 0) {
+//                remove(preClickPosition + 1);
+//
+//                if (mOnScrollListener != null) {
+//                    mOnScrollListener.scrollTo(preClickPosition);
+//                }
+//
+//            } else {
+//                preClickPosition = -1;
+                remove(currentPosition + 1);
+                if (mOnScrollListener != null) {
+                    mOnScrollListener.scrollTo(currentPosition);
+//                }
             }
+
+
 
         }
     };
